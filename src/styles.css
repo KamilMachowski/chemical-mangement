@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+#hit {
+    display: none;
+    color: white;
+  }
+  
+  /* body {
+    background-image: url("../../wwwroot/images/background.jpg");
+    background-size: 100%;
+  } */
+  
+  /* .container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    
+  } */
+  
+  /* h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+  } */
+  
+  /* .holder {
+    width: 780px;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .table {
+    background-color: white;
+    color: black;
+  } */
+  
+  /* label {
+    background-color: green;
+  } */
+  
+  /* .deleteOff {
+    margin-left: 5px;
+  } */
+  button,
+  #searchField {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #recordTable {
+    width: 490px;
+  }
+  
+  .container {
+    margin-top: 50px;
+  }
+  
+  .JSDraw {
+    width: 800px;
+    height: 400px;
+  }
+  
+  .fas {
+    font-size: 24px;
+  }

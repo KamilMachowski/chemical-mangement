@@ -1,1 +1,16 @@
-<p>success works!</p>
+<button id="success" class="btn btn-success"></button>
+<button id="again" class="btn btn-success"></button>
+<script>
+    $("#addNewItem").on("click", function () {
+        var ctrl2 = new NewItemCtrl();
+        ctrl2.GetView();
+    });
+    $("#editItem").on("click", function () {
+        var ctrl3 = new UpdateCtrl();
+        ctrl3.GetView();
+    });
+    $("#deleteItem").on("click", function () {
+        var ctrl4 = new DeleteCtrl();
+        ctrl4.GetView();
+    });
+</script>

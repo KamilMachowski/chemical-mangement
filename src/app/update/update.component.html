@@ -1,1 +1,96 @@
-<p>update works!</p>
+<div>
+    <button id=newQuery class="btn btn-primary">New Search</button>
+</div>
+<div id="response">
+    <div id="select">
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <table id="recordTable" class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" width="20%">PROPERTY</th>
+                        <th scope="col" width="80%">VALUE</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <div class="canvas-container">
+                <canvas id="output-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button id=updateItem class="btn btn-primary">Update Item</button>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var editItem = localStorage.getItem('edit');
+        editItem = JSON.parse(editItem);
+
+        $("#tableBody").append(`
+            <tr>
+                <th scope="row">CAS</th>
+                <td><input type=text class="form-control" id="cas" value=${editItem.cas}></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><input type=text class="form-control" id="name" value=${editItem.name}></td>
+            </tr>
+            <tr>
+                <th scope="row">Location</th>
+                <td><input type=text class="form-control" id="location" value=${editItem.location}></td>
+            </tr>
+            <tr>
+                <th scope="row">Supplier</th>
+                <td><input type=text class="form-control" id="supplier" value=${editItem.supplier}></td>
+            </tr>
+            <tr>
+                <th scope="row">Quantity</th>
+                <td><input type=text class="form-control" id="quantity" value=${editItem.quantity}></td>
+            </tr>      
+            `);
+
+        $("#updateItem").click(function () {
+
+            var updateItem = {
+                id: editItem.id,
+                smiles: editItem.smiles,
+                cas: $("#cas").val(),
+                name: $("#name").val(),
+                quantity: $("#quantity").val(),
+                supplier: $("#supplier").val(),
+                location: $("#location").val()
+            };
+            var settings = {
+                async: true,
+                crossDomain: true,
+                url: "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update",
+                method: "PUT",
+                data: JSON.stringify(updateItem)
+            };
+            console.log(updateItem);
+
+            $.ajax(settings).done(function (data) {
+                var ctrl6 = new SuccessCtrl();
+                ctrl6.GetView();
+                $("#success").append(data);
+                $("#again").attr('id', 'searchItem').append("Search new item");
+                console.log(data);
+            });
+        });
+        $("#newQuery").click(function () {
+            var ctrl = new SearchCtrl();
+            ctrl.GetView();
+        });
+    });
+</script>
