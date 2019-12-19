@@ -1,23 +1,5 @@
-<button id="searchItem" class="btn btn-success">Search item</button>
-<button id="addNewItem" class="btn btn-success">Add new item</button>
+<button id="searchItem" class="btn btn-success" [routerLink]="['/search']">Search item</button>
+<button id="addNewItem" class="btn btn-success" [routerLink]="['/create']">Add new item</button>
 <h4>To edit or delete item you have to find it in DB using search button</h4>
 <!-- <button id="editItem" class="btn btn-success">Edit item</button>
 <button id="deleteItem" class="btn btn-success">Delete item</button> -->
-<script>
-    $("#searchItem").on("click", function () {
-        var ctrl1 = new SearchCtrl();
-        ctrl1.GetView();
-    });
-    $("#addNewItem").on("click", function () {
-        var ctrl2 = new NewItemCtrl();
-        ctrl2.GetView();
-    });
-    // $("#editItem").on("click", function () {
-    //     var ctrl3 = new UpdateCtrl();
-    //     ctrl3.GetView();
-    // });
-    // $("#deleteItem").on("click", function () {
-    //     var ctrl4 = new DeleteCtrl();
-    //     ctrl4.GetView();
-    // });
-</script>

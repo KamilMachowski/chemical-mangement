@@ -1,5 +1,5 @@
 <div>
-    <button id=newQuery class="btn btn-primary">New Search</button>
+    <button id=newQuery class="btn btn-primary" [routerLink]="['/search']">New Search</button>
 </div>
 <div id="response">
     <div id="select">
@@ -27,8 +27,8 @@
     </div>
 </div>
 <div>
-    <button id=editItem class="btn btn-primary">Edit Item</button>
-    <button id=deleteItem class="btn btn-danger">Delete Item</button>
+    <button id=editItem class="btn btn-primary" [routerLink]="['/update']">Edit Item</button>
+    <button id=deleteItem class="btn btn-danger" [routerLink]="['/delete']">Delete Item</button>
 </div>
 
 
@@ -125,17 +125,17 @@
 
             });
         });
-        $("#newQuery").click(function () {
-            var ctrl = new SearchCtrl();
-            ctrl.GetView();
-        });
-        $("#editItem").click(function () {
-            var ctrl = new EditItemCtrl();
-            ctrl.GetView();
-        });
-        $("#deleteItem").click(function () {
-            var ctrl = new DeleteItemCtrl();
-            ctrl.GetView();
-        });
+        // $("#newQuery").click(function () {
+        //     var ctrl = new SearchCtrl();
+        //     ctrl.GetView();
+        // });
+        // $("#editItem").click(function () {
+        //     var ctrl = new EditItemCtrl();
+        //     ctrl.GetView();
+        // });
+        // $("#deleteItem").click(function () {
+        //     var ctrl = new DeleteItemCtrl();
+        //     ctrl.GetView();
+        // });
     });
 </script>
