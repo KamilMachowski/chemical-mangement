@@ -7303,7 +7303,7 @@ exports.default = function () {
         'hasNext': s[5] ? true : false
       };
 
-      return s;
+      // return s;
     },
         peg$c1 = "(",
         peg$c2 = {
