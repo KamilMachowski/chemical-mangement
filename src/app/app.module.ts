@@ -14,7 +14,7 @@ import { UpdateComponent } from './update/update.component';
 import { CreateComponent } from './create/create.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfigComponent } from './config/config.component';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { ConfigComponent } from './config/config.component';
     UpdateComponent,
     CreateComponent,
     DeleteComponent,
-    ConfigComponent
+    ApiComponent
   ],
   imports: [
     BrowserModule,
