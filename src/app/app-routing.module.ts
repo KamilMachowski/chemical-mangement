@@ -10,7 +10,7 @@ import { SuccessComponent } from './success/success.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'main', component: MainComponent },
+  { path: '', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'create', component: CreateComponent },

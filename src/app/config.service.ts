@@ -9,15 +9,15 @@ export class ConfigService {
   configUrl = 'assets/config.json';
   constructor(private http: HttpClient) {}
   getConfig() {
-    return this.http.get<Config>(this.configUrl, getOptions);
+    return this.http.get(this.configUrl);
   }
-  postConfig() {
-    return this.http.post(this.configUrl, postOptions); // todo
-  }
-  putConfig() {
-    return this.http.put(this.configUrl, putOptions); //todo
-  }
-  deleteConfig() {
-    return this.http.delete(this.configUrl , delOptions);
-  }
+  // postConfig() {
+  //   return this.http.post(this.configUrl, postOptions); // todo
+  // }
+  // putConfig() {
+  //   return this.http.put(this.configUrl, putOptions); //todo
+  // }
+  // deleteConfig() {
+  //   return this.http.delete(this.configUrl , delOptions);
+  // }
 }
