@@ -1,7 +1,7 @@
 <div class="form-group row">
     <div class="form-group">
         <div class='JSDraw' id="test" dataformat='' data=''></div>
-        <input id="searchField" type="text" class="form-control" placeholder="Draw structure or type CAS or Name of searched compound">
+        <input type="text" class="form-control" placeholder="Draw structure or type CAS or Name of searched compound" autofocus>
         <button class="btn btn-primary">Search</button>
     </div>
 </div>
@@ -16,16 +16,27 @@
 
     function foo(jsdraw) {
         var smiles = jsdraw.getSmiles();
-        $('#searchField').val(smiles);
+        $('input').val(smiles);
     }
 </script>
 <script>
     $(document).ready(function () {
-        $("button").on("click", function () {
-            var search = $("#searchField").val();
+        localStorage.removeItem('edit');
+        localStorage.removeItem('search');
+    
+        function search() {
+            var search = $('input').val();
             localStorage.setItem('search', search);
             var response = new ResponseCtrl();
             response.GetView();
+        }
+        $('input').on('keyup', function (e) {
+            if (e.originalEvent.keyCode === 13) {
+                search();
+            }
+        });
+        $('button').on('click', function () {
+            search();
         });
     });
 </script>

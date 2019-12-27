@@ -1,45 +1,32 @@
 <div class="form-group row">
     <div id="newForm" class="form-group">
         <div class='JSDraw' id="test" dataformat='' data=''></div>
-        <div class="form-group row">
-            <label for="smiles" class="col-sm-2 col-form-label btn btn-success" disabled>SMILES</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="smiles" value="">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="cas" class="col-sm-2 col-form-label btn btn-success" disabled>CAS#</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="cas" value="">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label btn btn-success" disabled>Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" value="">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="quantity" class="col-sm-2 col-form-label btn btn-success" disabled>Quantity</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="quantity" value="">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="supplier" class="col-sm-2 col-form-label btn btn-success" disabled>Supplier</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="supplier" value="">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="location" class="col-sm-2 col-form-label btn btn-success" disabled>Location</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="location" value="">
+        <div id="table">
+            <div id="recordTable" class="row">
+                <div class="col-lg-2">
+                    <button class="btn btn-secondary btn-block" disabled>SMILES</button>
+                    <button class="btn btn-secondary btn-block" disabled>CAS#</button>
+                    <button class="btn btn-secondary btn-block" disabled>Name</button>
+                    <button class="btn btn-secondary btn-block" disabled>Quantity</button>
+                    <button class="btn btn-secondary btn-block" disabled>Supplier</button>
+                    <button class="btn btn-secondary btn-block" disabled>Location</button>
+                </div>
+                <div class="col-lg-10">
+                    <div id="tableBody">
+                        <input id="smiles" type=text class="form-control" value="">
+                        <input id="cas" type=text class="form-control" value="">
+                        <input id="name" type=text class="form-control" value="">
+                        <input id="quantity" type=text class="form-control" value="">
+                        <input id="supplier" type=text class="form-control" value="">
+                        <input id="location" type=text class="form-control" value="">
+                    </div>
+                </div>
             </div>
         </div>
         <button id="addItem" type="submit" class="btn btn-success">Send</button>
     </div>
 </div>
+
 <script type="text/javascript">
     JSDraw.create('test', {
         plugins: [{
@@ -74,7 +61,7 @@
         console.log(item);
 
         $.ajax(settings).done(function (data) {
-            var ctrl6=new SuccessCtrl();
+            var ctrl6 = new SuccessCtrl();
             ctrl6.GetView();
             $("#success").append(data);
             $("#again").attr('id', 'addNewItem').append("Add next item");

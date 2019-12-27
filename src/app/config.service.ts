@@ -7,17 +7,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConfigService {
   configUrl = 'assets/config.json';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
   getConfig() {
-    return this.httpClient.get(this.configUrl);
+    return this.http.get<Config>(this.configUrl, getOptions);
   }
   postConfig() {
-    return this.httpClient.post(this.configUrl, body); // todo
+    return this.http.post(this.configUrl, postOptions); // todo
   }
   putConfig() {
-    return this.httpClient.put(this.configUrl, body); //todo
+    return this.http.put(this.configUrl, putOptions); //todo
   }
   deleteConfig() {
-    return this.httpClient.delete(this.configUrl);
+    return this.http.delete(this.configUrl , delOptions);
   }
 }
