@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-search',
@@ -11,8 +10,12 @@ export class SearchComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    localStorage.removeItem('edit');
+    localStorage.removeItem('search');
+  }
+
   searchItem() {
-    this.apiService.getData().subscribe((data) => (this.items = data));
+    localStorage.setItem('search', this.search);
   }
 }

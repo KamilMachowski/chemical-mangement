@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Config } from 'protractor';
+import { Item } from '../_models/item';
 
 @Component({
   selector: 'app-config',
@@ -8,10 +9,10 @@ import { Config } from 'protractor';
   styleUrls: ['./api.component.css']
 })
 export class ApiComponent implements OnInit {
-items;
+  items: Item[];
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.apiService.getData().subscribe((data) => (this.items = data));
+    
   }
 }

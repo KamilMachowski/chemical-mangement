@@ -1,42 +1,23 @@
 <div class="form-group row">
-    <div class="form-group">
-        <div class='JSDraw' id="test" dataformat='' data=''></div>
-    <input type="text" class="form-control" placeholder="Draw structure or type CAS or Name of searched compound" autofocus [(ngModel)]="search">
-        <button class="btn btn-primary" (click)="searchItem()">Search</button>
-    </div>
+  <div class="form-group">
+    <div class='JSDraw' id="test" dataformat='' data=''></div>
+    <input type="text" class="form-control" placeholder="Draw structure or type CAS or Name of searched compound"
+      autofocus [(ngModel)]="search"  (keyup.enter)="searchItem()">
+    <button class="btn btn-primary" (click)="searchItem()" routerLink="/read">Search</button>
+  </div>
 </div>
 <script type="text/javascript">
-    JSDraw.create('test', {
-        plugins: [{
-            iconurl: 'plugins/world.gif',
-            tooltips: 'Get SMILES',
-            onclick: foo
-        }]
-    });
+  JSDraw.create('test', {
+    plugins: [{
+      iconurl: 'plugins/world.gif',
+      tooltips: 'Get SMILES',
+      onclick: foo
+    }]
+  });
 
-    function foo(jsdraw) {
-        var smiles = jsdraw.getSmiles();
-        $('input').val(smiles);
-    }
-</script>
-<script>
-    $(document).ready(function () {
-        localStorage.removeItem('edit');
-        localStorage.removeItem('search');
-    
-        function search() {
-            var search = $('input').val();
-            localStorage.setItem('search', search);
-            var response = new ResponseCtrl();
-            response.GetView();
-        }
-        $('input').on('keyup', function (e) {
-            if (e.originalEvent.keyCode === 13) {
-                search();
-            }
-        });
-        $('button').on('click', function () {
-            search();
-        });
-    });
+  function foo(jsdraw) {
+    var smiles = jsdraw.getSmiles();
+    $('input').val(smiles);
+  }
+
 </script>
