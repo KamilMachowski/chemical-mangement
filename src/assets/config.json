@@ -1,6 +1,0 @@
-{
-    "createUrl": "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/create",
-    "readUrl": "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/read",
-    "updateUrl": "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update",
-    "deleteUrl": "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/delete"
-}

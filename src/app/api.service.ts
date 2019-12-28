@@ -1,32 +1,25 @@
 import { Injectable, Input } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-//import { Item } from './_models/item';
-// import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  //items: Object[];
-  //@Input() search: string;
- // showData$: Observable<any>;
- // private search = new Subject<any>();
-  // configUrl = 'assets/config.json';
- // const items = new Item[];
+
   constructor(private http: HttpClient) {
-   // this.showData$ = this.search.asObservable();
   }
   getData(search: string) {
-    return this.http.get(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/get?search=${search}`); // ok
+    return this.http.get(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/get?search=${search}`);
   }
 
-  // postConfig() {
-  //   return this.http.post(this.configUrl, postOptions); // todo
-  // }
+  postConfig(data: string) {
+    return this.http.post(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/create`, data);
+  }
+
   putData(data: string) {
      return this.http.put(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update`, data);
   }
+
   deleteData(id: number) {
      return this.http.delete(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/delete/${id}`);
   }
