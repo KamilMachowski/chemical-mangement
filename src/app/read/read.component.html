@@ -40,11 +40,11 @@
         </div>
         <div class="col-lg-8">
           <button class="btn btn-info btn-block" disabled>VALUE</button>
-          <input id="cas" type=text class="form-control" [value]="item.cas" disabled>
-          <input id="name" type=text class="form-control" [value]="item.name" disabled>
-          <input id="location" type=text class="form-control" [value]="item.location" disabled>
-          <input id="supplier" type=text class="form-control" [value]="item.supplier" disabled>
-          <input id="quantity" type=text class="form-control" [value]="item.quantity" disabled>
+          <input id="cas" type=text class="form-control" [(ngModel)]="item.cas" disabled>
+          <input id="name" type=text class="form-control" [(ngModel)]="item.name" disabled>
+          <input id="location" type=text class="form-control" [(ngModel)]="item.location" disabled>
+          <input id="supplier" type=text class="form-control" [(ngModel)]="item.supplier" disabled>
+          <input id="quantity" type=text class="form-control" [(ngModel)]="item.quantity" disabled>
         </div>
       </div>
     </div>
