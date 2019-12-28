@@ -1,14 +1,14 @@
 import { Injectable, Input } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Item } from './_models/item';
+//import { Item } from './_models/item';
 // import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  items: Object[];
+  //items: Object[];
   //@Input() search: string;
  // showData$: Observable<any>;
  // private search = new Subject<any>();
