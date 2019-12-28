@@ -1,136 +1,63 @@
 <div>
-    <button id=newQuery class="btn btn-primary" routerLink="/search">New Search</button>
-    <div id="response">
-        <button class="btn btn-secondary disabled"><span class="spinner-border spinner-border-sm" role="status"
-                aria-hidden="true"></span>
-            Loading...</button>
+  <button class="btn btn-primary" routerLink="/search">New Search</button>
+  <div id="load">
+    <div *ngIf="numberOfHits === undefined;else defined">
+      <button class="btn btn-secondary disabled">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
     </div>
+    <ng-template #defined>
+      <div *ngIf="!numberOfHits ;else found">
+        <button class="btn btn-danger center" disabled>Compound not found</button>
+        <button class="btn btn-success" routerlink="/create">Add new item</button>
+      </div>
+      <ng-template #found>
+        <button class="btn btn-secondary disabled">Found {{numberOfHits}} compounds</button>
+        <form>
+          <mat-form-field>
+            <mat-label>Select item</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option [value]="-1" (click)="getItemProps()">None</mat-option>
+              <mat-option *ngFor="let item of items; let i=index" [(value)]="i" (click)="getItemProps()">{{item.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </ng-template>
+    </ng-template>
+  </div>
 </div>
 <div id="hit" class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6">
-            <div id="recordTable" class="row">
-                <div class="col-lg-4 no-gutters">
-                    <button class="btn btn-info btn-block" disabled>PROPERTY</button>
-                    <button class="btn btn-secondary btn-block" disabled>CAS#</button>
-                    <button class="btn btn-secondary btn-block" disabled>Name</button>
-                    <button class="btn btn-secondary btn-block" disabled>Location</button>
-                    <button class="btn btn-secondary btn-block" disabled>Supplier</button>
-                    <button class="btn btn-secondary btn-block" disabled>Quantity</button>
-                </div>
-                <div class="col-lg-8">
-                    <button class="btn btn-info btn-block" disabled>VALUE</button>
-                    
-                    <input id="cas" type=text class="form-control" [(ngModel)]="this.item.cas" disabled>
-                    <input id="name" type=text class="form-control" value=${result.name} disabled>
-                    <input id="location" type=text class="form-control" value=${result.location} disabled>
-                    <input id="supplier" type=text class="form-control" value=${result.supplier} disabled>
-                    <input id="quantity" type=text class="form-control" value=${result.quantity} disabled>
-                    
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div id="recordTable" class="row">
+        <div class="col-lg-4 no-gutters">
+          <button class="btn btn-info btn-block" disabled>PROPERTY</button>
+          <button class="btn btn-secondary btn-block" disabled>CAS#</button>
+          <button class="btn btn-secondary btn-block" disabled>Name</button>
+          <button class="btn btn-secondary btn-block" disabled>Location</button>
+          <button class="btn btn-secondary btn-block" disabled>Supplier</button>
+          <button class="btn btn-secondary btn-block" disabled>Quantity</button>
         </div>
-        <div class="col-lg-6">
-            <div class="canvas-container">
-                <canvas id="output-canvas"></canvas>
-            </div>
+        <div class="col-lg-8">
+          <button class="btn btn-info btn-block" disabled>VALUE</button>
+          <input id="cas" type=text class="form-control" [(ngModel)]="bla" disabled>
+          <input id="name" type=text class="form-control" value=${result.name} disabled>
+          <input id="location" type=text class="form-control" value=${result.location} disabled>
+          <input id="supplier" type=text class="form-control" value=${result.supplier} disabled>
+          <input id="quantity" type=text class="form-control" value=${result.quantity} disabled>
         </div>
+      </div>
     </div>
+    <div class="col-lg-6">
+      <div class="canvas-container">
+        <canvas id="output-canvas"></canvas>
+      </div>
+    </div>
+  </div>
 </div>
 <div>
-    <button id=editItem class="btn btn-primary" routerLink="/update">Edit Item</button>
-    <button id=deleteItem class="btn btn-danger" routerLink="/delete">Delete Item</button>
+  <button id=editItem class="btn btn-primary" routerLink="/update">Edit Item</button>
+  <button id=deleteItem class="btn btn-danger" routerLink="/delete">Delete Item</button>
 </div>
-
-<script>
-    $(document).ready(function () {
-        var search = localStorage.getItem('search'); //get search phrase from local storage
-        var settings = {
-            async: true,
-            crossDomain: true,
-            url: "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/get",
-            method: "GET",
-            data: `search=${search}`
-        };
-        $.ajax(settings).done(function (data) {
-            var numberOfHits = data.length;
-            var selected = false; // var for checking if record is selected for table toggling purpose 
-            var ids = []; // array of ids of finded records, strored for set unique button id
-
-            if (!numberOfHits) {
-                $('#response').empty().append(
-                    `<button type="button" class="btn btn-danger center" disabled>Compound not found</button>
-                <button id="addNewItem" class="btn btn-success">Add new item</button>`);
-            } else {
-                $('#response').empty().append(
-                    `<div><button class="btn btn-secondary disabled">Found ${numberOfHits} compounds</button><select><option value='' >Choose one</option></select></div>`
-                );
-                for (var i = 0; i < numberOfHits; i++) {
-                    $('select').append(`<option value="${data[i].id}">${data[i].name}</option>`);
-                    ids.push(data[i].id);
-                } // filling <div id="select"> with buttons for finded records to view
-            }
-            $('select').change(function () {
-                var vieved = $('select').val(); //get original ID in DB
-                console.log(vieved);
-                if (!selected) {
-                    $("#hit").show();
-                    selected = true;
-                } else if (!vieved) {
-                    selected = false;
-                    localStorage.removeItem('edit');
-                    $("#hit").hide();
-                }
-                for (var i = 0; i < ids.length; i++) {
-                    if (ids[i] == vieved) currentId = i;
-                }
-                if (isNaN(currentId))
-                    return; //this on click i triggered on every button pressed, but is dediacted only for those with numerical id
-                result = data[currentId];
-                localStorage.setItem('edit', JSON.stringify(result));
-
-                var smiles = result.smiles;
-                var options = {
-                    width: 400,
-                    height: 300
-                }
-                var smilesDrawer = new SmilesDrawer.Drawer(options);
-
-                function draw() {
-                    SmilesDrawer.parse(smiles, function (tree) {
-                        smilesDrawer.draw(tree, 'output-canvas', 'light', false);
-                    }, function (err) {
-                        console.log(err);
-                    });
-                }
-                if (smiles) draw();
-                else {
-                    var c = document.getElementById('output-canvas');
-                    var ctx = c.getContext("2d");
-                    ctx.clearRect(0, 0, 400, 300);
-                } // cleares previous structure in case of no SMILES in DB for choosen compound
-
-                $('#tableBody').empty().append(`
-                    <input id="cas" type=text class="form-control" value=${result.cas} disabled>
-                    <input id="name" type=text class="form-control" value=${result.name} disabled>
-                    <input id="location" type=text class="form-control" value=${result.location} disabled>
-                    <input id="supplier" type=text class="form-control" value=${result.supplier} disabled>
-                    <input id="quantity" type=text class="form-control" value=${result.quantity} disabled>
-                `);
-
-            });
-        });
-        $("#newQuery").click(function () {
-            var ctrl = new SearchCtrl();
-            ctrl.GetView();
-        });
-        $("#editItem").click(function () {
-            var ctrl = new EditItemCtrl();
-            ctrl.GetView();
-        });
-        $("#deleteItem").click(function () {
-            var ctrl = new DeleteItemCtrl();
-            ctrl.GetView();
-        });
-    });
-</script>

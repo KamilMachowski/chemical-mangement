@@ -1,0 +1,84 @@
+#hit {
+    /* display: none; */
+    color: white;
+  }
+  
+  h4 {
+    color: red;
+  }
+  
+  /* body {
+    background-image: url("../../wwwroot/images/background.jpg");
+    background-size: 100%;
+  } */
+  
+  /* .container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    
+  } */
+  
+  /* h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+  } */
+  
+  /* .holder {
+    width: 780px;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .table {
+    background-color: white;
+    color: black;
+  } */
+  
+  /* label {
+    background-color: green;
+  } */
+  
+  /* .deleteOff {
+    margin-left: 5px;
+  } */
+  button,
+  #searchField {
+    margin: 10px;
+  
+  }
+  
+  input {
+    margin: 10px;
+    margin-left: 0px !important;
+    text-align: center;
+  }
+  
+  #recordTable {
+    border: 1px lightgray solid;
+    border-radius: 5px;
+  
+    /* width: 460; */
+  }
+  
+  .btn-block {
+    font-weight: bold;
+  }
+  
+  .container {
+    margin-top: 50px;
+  }
+  
+  .JSDraw {
+    width: 800px;
+    height: 400px;
+  }
+  
+  .fas {
+    font-size: 24px;
+  }
+  
+  select {
+    margin: 10px;
+  }
