@@ -1,71 +1,60 @@
 <div class="form-group row">
-    <div id="newForm" class="form-group">
-        <div class='JSDraw' id="test" dataformat='' data=''></div>
-        <div id="table">
-            <div id="recordTable" class="row">
-                <div class="col-lg-2">
-                    <button class="btn btn-secondary btn-block" disabled>SMILES</button>
-                    <button class="btn btn-secondary btn-block" disabled>CAS#</button>
-                    <button class="btn btn-secondary btn-block" disabled>Name</button>
-                    <button class="btn btn-secondary btn-block" disabled>Quantity</button>
-                    <button class="btn btn-secondary btn-block" disabled>Supplier</button>
-                    <button class="btn btn-secondary btn-block" disabled>Location</button>
-                </div>
-                <div class="col-lg-10">
-                    <div id="tableBody">
-                        <input id="smiles" type=text class="form-control" value="">
-                        <input id="cas" type=text class="form-control" value="">
-                        <input id="name" type=text class="form-control" value="">
-                        <input id="quantity" type=text class="form-control" value="">
-                        <input id="supplier" type=text class="form-control" value="">
-                        <input id="location" type=text class="form-control" value="">
-                    </div>
-                </div>
-            </div>
+  <div id="newForm" class="form-group">
+    <div class='JSDraw' id="test" dataformat='' data=''></div>
+    <div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">SMILES</span>
         </div>
-        <button id="addItem" type="submit" class="btn btn-success">Send</button>
+        <input type="text" class="form-control" [(ngModel)]="item.smiles">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">CAS#</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="item.cas">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="item.name">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Quantity</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="item.quantity">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Supplier</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="item.supplier">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Location</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="item.location">
+      </div>
     </div>
+    <button class="btn btn-success" (click)="create()">Send</button>
+  </div>
 </div>
 
-<script type="text/javascript">
-    JSDraw.create('test', {
-        plugins: [{
-            iconurl: 'plugins/world.gif',
-            tooltips: 'Get SMILES',
-            onclick: foo
-        }]
-    });
+<!-- <script type="text/javascript">
+  JSDraw.create('test', {
+    plugins: [{
+      iconurl: 'plugins/world.gif',
+      tooltips: 'Get SMILES',
+      onclick: foo
+    }]
+  });
 
-    function foo(jsdraw) {
-        var smiles = jsdraw.getSmiles();
-        $('#smiles').val(smiles);
-    }
-</script>
-<script>
-    $("#addItem").on("click", function (e) {
-        var item = {
-            smiles: $("#smiles").val(),
-            cas: $("#cas").val(),
-            name: $("#name").val(),
-            quantity: $("#quantity").val(),
-            supplier: $("#supplier").val(),
-            location: $("#location").val()
-        };
-        var settings = {
-            async: true,
-            crossDomain: true,
-            url: "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/create",
-            method: "POST",
-            data: JSON.stringify(item)
-        };
-        console.log(item);
+  function foo(jsdraw) {
+    var smiles = jsdraw.getSmiles();
+    $('#smiles').val(smiles);
+  }
 
-        $.ajax(settings).done(function (data) {
-            var ctrl6 = new SuccessCtrl();
-            ctrl6.GetView();
-            $("#success").append(data);
-            $("#again").attr('id', 'addNewItem').append("Add next item");
-            console.log(data);
-        });
-    });
-</script>
+</script> -->
