@@ -11,6 +11,7 @@ export class ReadComponent implements OnInit {
   selected: number;
   numberOfHits: number;
   items: Array<Item> = new Array();
+  item: Item;
 
   constructor(private apiService: ApiService) {}
 
@@ -40,8 +41,8 @@ export class ReadComponent implements OnInit {
     if (this.selected < 0) {
       localStorage.removeItem('edit');
     } else {
-      const result = this.items[this.selected];
-      localStorage.setItem('edit', JSON.stringify(result));
+      this.item = this.items[this.selected];
+      localStorage.setItem('edit', JSON.stringify(this.item));
     }
     // const smiles = result.smiles;
       // const options = {

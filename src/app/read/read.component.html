@@ -14,21 +14,19 @@
       </div>
       <ng-template #found>
         <button class="btn btn-secondary disabled">Found {{numberOfHits}} compounds</button>
-        <form>
-          <mat-form-field>
-            <mat-label>Select item</mat-label>
-            <mat-select [(value)]="selected">
-              <mat-option [value]="-1" (click)="getItemProps()">None</mat-option>
-              <mat-option *ngFor="let item of items; let i=index" [(value)]="i" (click)="getItemProps()">{{item.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
+        <mat-form-field>
+          <mat-label>Select item</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option [value]="-1" (click)="getItemProps()">None</mat-option>
+            <mat-option *ngFor="let item of items; let i=index" [(value)]="i" (click)="getItemProps()">{{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </ng-template>
     </ng-template>
   </div>
 </div>
-<div id="hit" class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-6">
       <div id="recordTable" class="row">
@@ -42,11 +40,11 @@
         </div>
         <div class="col-lg-8">
           <button class="btn btn-info btn-block" disabled>VALUE</button>
-          <input id="cas" type=text class="form-control" [(ngModel)]="bla" disabled>
-          <input id="name" type=text class="form-control" value=${result.name} disabled>
-          <input id="location" type=text class="form-control" value=${result.location} disabled>
-          <input id="supplier" type=text class="form-control" value=${result.supplier} disabled>
-          <input id="quantity" type=text class="form-control" value=${result.quantity} disabled>
+          <input id="cas" type=text class="form-control" [value]="this.item.cas" disabled>
+          <input id="name" type=text class="form-control" [value]="this.item.name" disabled>
+          <input id="location" type=text class="form-control" [value]="this.item.location" disabled>
+          <input id="supplier" type=text class="form-control" [value]="this.item.supplier" disabled>
+          <input id="quantity" type=text class="form-control" [value]="this.item.quantity" disabled>
         </div>
       </div>
     </div>
