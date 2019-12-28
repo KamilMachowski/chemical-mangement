@@ -12,7 +12,7 @@ export class ApiService {
     return this.http.get(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/get?search=${search}`);
   }
 
-  postConfig(data: string) {
+  postData(data: string) {
     return this.http.post(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/create`, data);
   }
 
