@@ -40,11 +40,11 @@
         </div>
         <div class="col-lg-8">
           <button class="btn btn-info btn-block" disabled>VALUE</button>
-          <input id="cas" type=text class="form-control" [value]="this.item.cas" disabled>
-          <input id="name" type=text class="form-control" [value]="this.item.name" disabled>
-          <input id="location" type=text class="form-control" [value]="this.item.location" disabled>
-          <input id="supplier" type=text class="form-control" [value]="this.item.supplier" disabled>
-          <input id="quantity" type=text class="form-control" [value]="this.item.quantity" disabled>
+          <input id="cas" type=text class="form-control" [value]="item.cas" disabled>
+          <input id="name" type=text class="form-control" [value]="item.name" disabled>
+          <input id="location" type=text class="form-control" [value]="item.location" disabled>
+          <input id="supplier" type=text class="form-control" [value]="item.supplier" disabled>
+          <input id="quantity" type=text class="form-control" [value]="item.quantity" disabled>
         </div>
       </div>
     </div>
@@ -56,6 +56,8 @@
   </div>
 </div>
 <div>
-  <button id=editItem class="btn btn-primary" routerLink="/update">Edit Item</button>
+  <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success"
+    data-offstyle="danger" ng-model="checkbox" (click)="edition()">
+  <button id=editItem class="btn btn-primary" routerLink="/update" disabled>Edit Item</button>
   <button id=deleteItem class="btn btn-danger" routerLink="/delete">Delete Item</button>
 </div>

@@ -12,6 +12,7 @@ export class ReadComponent implements OnInit {
   numberOfHits: number;
   items: Array<Item> = new Array();
   item: Item;
+  editable = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -45,26 +46,44 @@ export class ReadComponent implements OnInit {
       localStorage.setItem('edit', JSON.stringify(this.item));
     }
     // const smiles = result.smiles;
-      // const options = {
-      //   width: 400,
-      //   height: 300
-      // };
-      // const smilesDrawer = new SmilesDrawer.Drawer(options);
+    // const options = {
+    //   width: 400,
+    //   height: 300
+    // };
+    // const smilesDrawer = new SmilesDrawer.Drawer(options);
 
-      // function draw() {
-      //   SmilesDrawer.parse(
-      //     smiles,
-      //     function(tree) {
-      //       smilesDrawer.draw(tree, 'output-canvas', 'light', false);
-      //     },
-      //     function(err) {
-      //       console.log(err);
-      //     }
-      //   );
-      // }
-      // if (smiles) { draw(); } else {
-      //   const c = document.getElementById('output-canvas');
-      //   const ctx = c.getContext('2d');
-      //   ctx.clearRect(0, 0, 400, 300);
+    // function draw() {
+    //   SmilesDrawer.parse(
+    //     smiles,
+    //     function(tree) {
+    //       smilesDrawer.draw(tree, 'output-canvas', 'light', false);
+    //     },
+    //     function(err) {
+    //       console.log(err);
+    //     }
+    //   );
+    // }
+    // if (smiles) { draw(); } else {
+    //   const c = document.getElementById('output-canvas');
+    //   const ctx = c.getContext('2d');
+    //   ctx.clearRect(0, 0, 400, 300);
+  }
+  edition() {
+    this.editable = !this.editable;
+    if (this.editable) {
+      document.getElementById('editItem').removeAttribute('disabled');
+      document.getElementById('cas').removeAttribute('disabled');
+      document.getElementById('name').removeAttribute('disabled');
+      document.getElementById('location').removeAttribute('disabled');
+      document.getElementById('supplier').removeAttribute('disabled');
+      document.getElementById('quantity').removeAttribute('disabled');
+    } else {
+      document.getElementById('editItem').setAttribute('disabled', '');
+      document.getElementById('cas').setAttribute('disabled', '');
+      document.getElementById('name').setAttribute('disabled', '');
+      document.getElementById('location').setAttribute('disabled', '');
+      document.getElementById('supplier').setAttribute('disabled', '');
+      document.getElementById('quantity').setAttribute('disabled', '');
+    }
   }
 }
