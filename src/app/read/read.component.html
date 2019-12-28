@@ -57,7 +57,7 @@
 </div>
 <div>
   <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success"
-    data-offstyle="danger" ng-model="checkbox" (click)="edition()">
+    data-offstyle="danger" ng-model="checkbox" (click)="editOn()">
   <button id=updateItem class="btn btn-primary" (click)="update()" disabled>Update Item</button>
-  <button id=deleteItem class="btn btn-danger" routerLink="/delete">Delete Item</button>
+  <button id=deleteItem class="btn btn-danger" (click)="delete()">Delete Item</button>
 </div>

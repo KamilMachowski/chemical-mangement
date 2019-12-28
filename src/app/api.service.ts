@@ -27,7 +27,7 @@ export class ApiService {
   putData(data: string) {
      return this.http.put(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update`, data);
   }
-  // deleteConfig() {
-  //   return this.http.delete(this.configUrl , delOptions);
-  // }
+  deleteData(id: number) {
+     return this.http.delete(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/delete/${id}`);
+  }
 }

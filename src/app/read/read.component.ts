@@ -68,7 +68,7 @@ export class ReadComponent implements OnInit {
     //   const ctx = c.getContext('2d');
     //   ctx.clearRect(0, 0, 400, 300);
   }
-  edition() {
+  editOn() {
     // edition on/off method
     this.editable = !this.editable;
     if (this.editable) {
@@ -92,9 +92,18 @@ export class ReadComponent implements OnInit {
 
     const data = JSON.stringify(this.item);
     this.apiService.putData(data).subscribe(res => console.log(res));
-
-    //             $("#success").append(data); // data = Item ${item.id} successfully updated
+    // API response: Item ${item.id} successfully updated
+    //             $("#success").append(data);
     //             $("#again").attr('id', 'searchItem').append("Search new item");
     //             console.log(data);
+  }
+  delete() {
+    console.log(`Item ID: ${this.item.id} will be deleted from DB`);
+    if (confirm(`Item ID: ${this.item.id} will be deleted from DB`)) {
+      this.apiService.deleteData(this.item.id).subscribe(res => console.log(res));
+      console.log('deleted');
+    } else console.log('aborted');
+
+    // API response: Item ${itemId} successfully deleted
   }
 }
