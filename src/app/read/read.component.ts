@@ -68,7 +68,7 @@ export class ReadComponent implements OnInit {
     //   const ctx = c.getContext('2d');
     //   ctx.clearRect(0, 0, 400, 300);
   }
-  edition() {
+  edition() { // edition on/off method
     this.editable = !this.editable;
     if (this.editable) {
       document.getElementById('updateItem').removeAttribute('disabled');
@@ -87,47 +87,51 @@ export class ReadComponent implements OnInit {
     }
   }
   update(){
-    $(document).ready(function () {
-      var editItem = localStorage.getItem('edit');
-      editItem = JSON.parse(editItem);
 
-      $("#tableBody").append(`
-          <input id="cas" type=text class="form-control" value=${editItem.cas}>
-          <input id="name" type=text class="form-control" value=${editItem.name}>
-          <input id="location" type=text class="form-control" value=${editItem.location}>
-          <input id="supplier" type=text class="form-control" value=${editItem.supplier}>
-          <input id="quantity" type=text class="form-control" value=${editItem.quantity}>     
-      `);
+    console.log(this.item.name);
+  //   const data = {
+  //     id: this.item.id,
+  //     smiles: this.item.smiles,
+  //     cas: this.item.cas,
+  //     name: this.item.name,
+  //     quantity: $("#quantity").val(),
+  //     supplier: $("#supplier").val(),
+  //     location: $("#location").val()
+  // };
+    
+  //   this.apiService.putData(data);
+  //     var editItem = localStorage.getItem('edit');
+  //     editItem = JSON.parse(editItem);
 
-      $("#updateItem").click(function () {
+  //     $("#updateItem").click(function () {
 
-          var updateItem = {
-              id: editItem.id,
-              smiles: editItem.smiles,
-              cas: $("#cas").val(),
-              name: $("#name").val(),
-              quantity: $("#quantity").val(),
-              supplier: $("#supplier").val(),
-              location: $("#location").val()
-          };
-          var settings = {
-              async: true,
-              crossDomain: true,
-              url: "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update",
-              method: "PUT",
-              data: JSON.stringify(updateItem)
-          };
-          console.log(updateItem);
+  //         var updateItem = {
+  //             id: editItem.id,
+  //             smiles: editItem.smiles,
+  //             cas: $("#cas").val(),
+  //             name: $("#name").val(),
+  //             quantity: $("#quantity").val(),
+  //             supplier: $("#supplier").val(),
+  //             location: $("#location").val()
+  //         };
+  //         var settings = {
+  //             async: true,
+  //             crossDomain: true,
+  //             url: "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update",
+  //             method: "PUT",
+  //             data: JSON.stringify(updateItem)
+  //         };
+  //         console.log(updateItem);
 
-          $.ajax(settings).done(function (data) {
-              var ctrl6 = new SuccessCtrl();
-              ctrl6.GetView();
-              $("#success").append(data);
-              $("#again").attr('id', 'searchItem').append("Search new item");
-              console.log(data);
-          });
-      });
+  //         $.ajax(settings).done(function (data) {
+  //             var ctrl6 = new SuccessCtrl();
+  //             ctrl6.GetView();
+  //             $("#success").append(data);
+  //             $("#again").attr('id', 'searchItem').append("Search new item");
+  //             console.log(data);
+  //         });
+  //     });
 
-  });
+  // });
   }
 }

@@ -12,7 +12,6 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/success.component';
 import { ReadComponent } from './read/read.component';
-import { UpdateComponent } from './update/update.component';
 import { CreateComponent } from './create/create.component';
 import { DeleteComponent } from './delete/delete.component';
 
@@ -24,7 +23,6 @@ import { DeleteComponent } from './delete/delete.component';
     LoginComponent,
     SuccessComponent,
     ReadComponent,
-    UpdateComponent,
     CreateComponent,
     DeleteComponent,
   ],
