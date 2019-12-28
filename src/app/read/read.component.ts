@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class ReadComponent implements OnInit {
   selected: number;
-  numberOfHits: number;
+  numberOfHits: number; // used in html file!
   items: Item[] = [];
   @Input() item: Item = new Item();
   editable = false;
