@@ -13,7 +13,6 @@ import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/success.component';
 import { ReadComponent } from './read/read.component';
 import { CreateComponent } from './create/create.component';
-import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { DeleteComponent } from './delete/delete.component';
     SuccessComponent,
     ReadComponent,
     CreateComponent,
-    DeleteComponent,
   ],
   imports: [
     BrowserModule,

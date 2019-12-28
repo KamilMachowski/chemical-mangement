@@ -4,7 +4,6 @@ import { MainComponent } from './main/main.component';
 import { SearchComponent } from './search/search.component';
 import { CreateComponent } from './create/create.component';
 import { ReadComponent } from './read/read.component';
-import { DeleteComponent } from './delete/delete.component';
 import { SuccessComponent } from './success/success.component';
 import { LoginComponent } from './login/login.component';
 
@@ -14,7 +13,6 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'create', component: CreateComponent },
   { path: 'read', component: ReadComponent },
-  { path: 'delete', component: DeleteComponent },
   { path: 'success', component: SuccessComponent }
 ];
 
