@@ -71,19 +71,63 @@ export class ReadComponent implements OnInit {
   edition() {
     this.editable = !this.editable;
     if (this.editable) {
-      document.getElementById('editItem').removeAttribute('disabled');
+      document.getElementById('updateItem').removeAttribute('disabled');
       document.getElementById('cas').removeAttribute('disabled');
       document.getElementById('name').removeAttribute('disabled');
       document.getElementById('location').removeAttribute('disabled');
       document.getElementById('supplier').removeAttribute('disabled');
       document.getElementById('quantity').removeAttribute('disabled');
     } else {
-      document.getElementById('editItem').setAttribute('disabled', '');
+      document.getElementById('updateItem').setAttribute('disabled', '');
       document.getElementById('cas').setAttribute('disabled', '');
       document.getElementById('name').setAttribute('disabled', '');
       document.getElementById('location').setAttribute('disabled', '');
       document.getElementById('supplier').setAttribute('disabled', '');
       document.getElementById('quantity').setAttribute('disabled', '');
     }
+  }
+  update(){
+    $(document).ready(function () {
+      var editItem = localStorage.getItem('edit');
+      editItem = JSON.parse(editItem);
+
+      $("#tableBody").append(`
+          <input id="cas" type=text class="form-control" value=${editItem.cas}>
+          <input id="name" type=text class="form-control" value=${editItem.name}>
+          <input id="location" type=text class="form-control" value=${editItem.location}>
+          <input id="supplier" type=text class="form-control" value=${editItem.supplier}>
+          <input id="quantity" type=text class="form-control" value=${editItem.quantity}>     
+      `);
+
+      $("#updateItem").click(function () {
+
+          var updateItem = {
+              id: editItem.id,
+              smiles: editItem.smiles,
+              cas: $("#cas").val(),
+              name: $("#name").val(),
+              quantity: $("#quantity").val(),
+              supplier: $("#supplier").val(),
+              location: $("#location").val()
+          };
+          var settings = {
+              async: true,
+              crossDomain: true,
+              url: "https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/update",
+              method: "PUT",
+              data: JSON.stringify(updateItem)
+          };
+          console.log(updateItem);
+
+          $.ajax(settings).done(function (data) {
+              var ctrl6 = new SuccessCtrl();
+              ctrl6.GetView();
+              $("#success").append(data);
+              $("#again").attr('id', 'searchItem').append("Search new item");
+              console.log(data);
+          });
+      });
+
+  });
   }
 }

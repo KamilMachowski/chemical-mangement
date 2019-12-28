@@ -24,9 +24,9 @@ export class ApiService {
   // postConfig() {
   //   return this.http.post(this.configUrl, postOptions); // todo
   // }
-  // putConfig() {
-  //   return this.http.put(this.configUrl, putOptions); //todo
-  // }
+  putData(data: any) {
+     return this.http.put(`https://pht-api-munonj7kmq-ew.a.run.app/api/chemicals/put`, data);
+  }
   // deleteConfig() {
   //   return this.http.delete(this.configUrl , delOptions);
   // }
