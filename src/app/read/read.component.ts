@@ -10,7 +10,7 @@ import { ApiService } from '../api.service';
 export class ReadComponent implements OnInit {
   selected: number;
   numberOfHits: number;
-  items: Array<Item> = new Array();
+  items: Item[] = [];
   @Input() item: Item = new Item();
   editable = false;
 
@@ -18,24 +18,10 @@ export class ReadComponent implements OnInit {
 
   ngOnInit() {
     const search = localStorage.getItem('search');
-    this.apiService.getData(search).subscribe(data => {
+    this.apiService.getData(search).subscribe((data: Item[]) =>{
       this.numberOfHits = data.length;
-      // console.log(this.numberOfHits);
-      for (let i = 0; i < this.numberOfHits; i++) {
-        const tmp = new Item();
-        tmp.id = data[i].id;
-        tmp.cas = data[i].cas;
-        tmp.name = data[i].name;
-        tmp.location = data[i].location;
-        tmp.quantity = data[i].quantity;
-        tmp.smiles = data[i].smiles;
-        tmp.supplier = data[i].supplier;
-        this.items.push(tmp);
-      }
-      // console.log(this.items);
-
-      // console.log(`Number of hits: ${this.numberOfHits}`);
-    }); // cleares previous structure in case of no SMILES in DB for choosen compound
+      this.items = data;
+    });
   }
   getItemProps() {
     console.log(this.selected);
@@ -88,22 +74,16 @@ export class ReadComponent implements OnInit {
     }
   }
   update() {
-    console.log(this.item);
-
+    //console.log(this.item);
     const data = JSON.stringify(this.item);
     this.apiService.putData(data).subscribe(res => console.log(res));
     // API response: Item ${item.id} successfully updated
-    //             $("#success").append(data);
-    //             $("#again").attr('id', 'searchItem').append("Search new item");
-    //             console.log(data);
   }
   delete() {
     console.log(`Item ID: ${this.item.id} will be deleted from DB`);
     if (confirm(`Item ID: ${this.item.id} will be deleted from DB`)) {
       this.apiService.deleteData(this.item.id).subscribe(res => console.log(res));
-      console.log('deleted');
-    } else console.log('aborted');
-
+    }
     // API response: Item ${itemId} successfully deleted
   }
 }
