@@ -15,7 +15,6 @@ import { ReadComponent } from './read/read.component';
 import { UpdateComponent } from './update/update.component';
 import { CreateComponent } from './create/create.component';
 import { DeleteComponent } from './delete/delete.component';
-import { ApiComponent } from './api/api.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { ApiComponent } from './api/api.component';
     UpdateComponent,
     CreateComponent,
     DeleteComponent,
-    ApiComponent,
   ],
   imports: [
     BrowserModule,
