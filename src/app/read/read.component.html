@@ -13,15 +13,16 @@
         <button class="btn btn-success" routerlink="/create">Add new item</button>
       </div>
       <ng-template #found>
-        <button class="btn btn-secondary disabled">Found {{numberOfHits}} compounds</button>
-        <mat-form-field>
-          <mat-label>Select item</mat-label>
-          <mat-select [(value)]="selected">
-            <mat-option [value]="-1" (click)="getItemProps()">None</mat-option>
-            <mat-option *ngFor="let item of items; let i=index" [(value)]="i" (click)="getItemProps()">{{item.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="input-group mb-3" style="width: 800px;">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="sel">Found {{numberOfHits}} compounds</label>
+          </div>
+          <select class="custom-select" id="sel" [(ngModel)]="selected">
+            <option selected [value]="-1" (click)="getItemProps()">Choose...</option>
+            <option *ngFor="let item of items; let i=index" [value]="i" (click)="getItemProps()">{{item.name}}
+            </option>
+          </select>
+        </div>
       </ng-template>
     </ng-template>
   </div>
@@ -29,23 +30,41 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-6">
-      <div id="recordTable" class="row">
-        <div class="col-lg-4 no-gutters">
-          <button class="btn btn-info btn-block" disabled>PROPERTY</button>
-          <button class="btn btn-secondary btn-block" disabled>CAS#</button>
-          <button class="btn btn-secondary btn-block" disabled>Name</button>
-          <button class="btn btn-secondary btn-block" disabled>Location</button>
-          <button class="btn btn-secondary btn-block" disabled>Supplier</button>
-          <button class="btn btn-secondary btn-block" disabled>Quantity</button>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">PROPERTY</span>
         </div>
-        <div class="col-lg-8">
-          <button class="btn btn-info btn-block" disabled>VALUE</button>
-          <input id="cas" type=text class="form-control" [(ngModel)]="item.cas" disabled>
-          <input id="name" type=text class="form-control" [(ngModel)]="item.name" disabled>
-          <input id="location" type=text class="form-control" [(ngModel)]="item.location" disabled>
-          <input id="supplier" type=text class="form-control" [(ngModel)]="item.supplier" disabled>
-          <input id="quantity" type=text class="form-control" [(ngModel)]="item.quantity" disabled>
+        <input id="cas" type=text class="form-control" value="VALUE" disabled>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">CAS#</span>
         </div>
+        <input id="cas" type=text class="form-control" [(ngModel)]="item.cas" disabled>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name</span>
+        </div>
+        <input id="name" type=text class="form-control" [(ngModel)]="item.name" disabled>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Quantity</span>
+        </div>
+        <input id="quantity" type=text class="form-control" [(ngModel)]="item.quantity" disabled>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Supplier</span>
+        </div>
+        <input id="supplier" type=text class="form-control" [(ngModel)]="item.supplier" disabled>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Location</span>
+        </div>
+        <input id="location" type=text class="form-control" [(ngModel)]="item.location" disabled>
       </div>
     </div>
     <div class="col-lg-6">

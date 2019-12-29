@@ -18,7 +18,7 @@ export class ReadComponent implements OnInit {
 
   ngOnInit() {
     const search = localStorage.getItem('search');
-    this.apiService.getData(search).subscribe((data: Item[]) =>{
+    this.apiService.getData(search).subscribe((data: Item[]) => {
       this.numberOfHits = data.length;
       this.items = data;
     });
@@ -26,10 +26,9 @@ export class ReadComponent implements OnInit {
   getItemProps() {
     console.log(this.selected);
     if (this.selected < 0) {
-      localStorage.removeItem('edit');
+      this.item = new Item();
     } else {
       this.item = this.items[this.selected];
-      localStorage.setItem('edit', JSON.stringify(this.item));
     }
     // const smiles = result.smiles;
     // const options = {
@@ -74,7 +73,7 @@ export class ReadComponent implements OnInit {
     }
   }
   update() {
-    //console.log(this.item);
+    // console.log(this.item);
     const data = JSON.stringify(this.item);
     this.apiService.putData(data).subscribe(res => console.log(res));
     // API response: Item ${item.id} successfully updated
