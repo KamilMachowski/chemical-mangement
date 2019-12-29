@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../_models/item';
 import { ApiService } from '../api.service';
+declare var SmilesDrawer: any;
 
 @Component({
   selector: 'app-read',
@@ -30,28 +31,31 @@ export class ReadComponent implements OnInit {
     } else {
       this.item = this.items[this.selected];
     }
-    // const smiles = result.smiles;
-    // const options = {
-    //   width: 400,
-    //   height: 300
-    // };
-    // const smilesDrawer = new SmilesDrawer.Drawer(options);
+    const smiles = this.item.smiles;
+    const options = {
+      width: 400,
+      height: 300
+    };
+    const smilesDrawer = new SmilesDrawer.Drawer(options);
 
-    // function draw() {
-    //   SmilesDrawer.parse(
-    //     smiles,
-    //     function(tree) {
-    //       smilesDrawer.draw(tree, 'output-canvas', 'light', false);
-    //     },
-    //     function(err) {
-    //       console.log(err);
-    //     }
-    //   );
-    // }
-    // if (smiles) { draw(); } else {
-    //   const c = document.getElementById('output-canvas');
-    //   const ctx = c.getContext('2d');
-    //   ctx.clearRect(0, 0, 400, 300);
+    function draw() {
+      SmilesDrawer.parse(
+        smiles,
+        function(tree) {
+          smilesDrawer.draw(tree, 'output-canvas', 'light', false);
+        },
+        function(err) {
+          console.log(err);
+        }
+      );
+    }
+    if (smiles) {
+      draw();
+    } else {
+      const c = document.getElementById('output-canvas');
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, 400, 300);
+    }
   }
   editOn() {
     // edition on/off method
@@ -81,7 +85,9 @@ export class ReadComponent implements OnInit {
   delete() {
     console.log(`Item ID: ${this.item.id} will be deleted from DB`);
     if (confirm(`Item ID: ${this.item.id} will be deleted from DB`)) {
-      this.apiService.deleteData(this.item.id).subscribe(res => console.log(res));
+      this.apiService
+        .deleteData(this.item.id)
+        .subscribe(res => console.log(res));
     }
     // API response: Item ${itemId} successfully deleted
   }
