@@ -95,7 +95,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.4.1.min.js",
+              "src/assets/js/JSDraw2.Pro.js",
+              "src/assets/js/smiles-drawer.js"
+            ]
           }
         },
         "lint": {

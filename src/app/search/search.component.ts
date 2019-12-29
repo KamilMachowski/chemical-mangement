@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+declare var JSDraw: any;
 
 @Component({
   selector: 'app-search',
@@ -6,16 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  search: string;
+  @Input() search: string;
 
   constructor() {}
 
   ngOnInit() {
-    localStorage.removeItem('edit');
     localStorage.removeItem('search');
+    JSDraw.create('test', {
+      plugins: [{
+        iconurl: 'plugins/world.gif',
+        tooltips: 'Get SMILES',
+        onclick: this.foo
+      }]
+    });
   }
 
   searchItem() {
     localStorage.setItem('search', this.search);
   }
+  foo(jsdraw: { getSmiles: () => string; }) {
+    this.search = jsdraw.getSmiles();
+    console.log(this.search);
+    }
 }
