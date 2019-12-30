@@ -41,10 +41,10 @@ export class ReadComponent implements OnInit {
     function draw() {
       SmilesDrawer.parse(
         smiles,
-        function(tree) {
+        function(tree: any) {
           smilesDrawer.draw(tree, 'output-canvas', 'light', false);
         },
-        function(err) {
+        function(err: any) {
           console.log(err);
         }
       );

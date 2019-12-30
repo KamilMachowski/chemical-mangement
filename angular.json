@@ -24,9 +24,11 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/chemwriter.css",
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/js/chemwriter.js",
               "src/assets/js/jquery-3.4.1.min.js",
               "src/assets/js/JSDraw2.Pro.js",
               "src/assets/js/smiles-drawer.js"
@@ -93,9 +95,11 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/chemwriter.css",
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/js/chemwriter.js",
               "src/assets/js/jquery-3.4.1.min.js",
               "src/assets/js/JSDraw2.Pro.js",
               "src/assets/js/smiles-drawer.js"

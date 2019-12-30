@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-declare var JSDraw: any;
+// declare var JSDraw: any;
+// declare var chemwriter: any;
 
 @Component({
   selector: 'app-search',
@@ -13,13 +14,14 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem('search');
-    JSDraw.create('test', {
-      plugins: [{
-        iconurl: 'plugins/world.gif',
-        tooltips: 'Get SMILES',
-        onclick: this.foo
-      }]
-    });
+    // chemwriter();
+    // JSDraw.create('test', {
+    //   plugins: [{
+    //     iconurl: 'plugins/world.gif',
+    //     tooltips: 'Get SMILES',
+    //     onclick: this.foo
+    //   }]
+    // });
   }
 
   searchItem() {

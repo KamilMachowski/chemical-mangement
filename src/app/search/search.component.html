@@ -1,6 +1,9 @@
 <div class="form-group row">
   <div class="form-group">
-    <div class='JSDraw' id="test" dataformat='' data=''></div>
+    <!-- <div class='JSDraw' id="test" dataformat='' data=''></div> -->
+    <div class="editor">
+      <div id="editor" data-chemwriter-width="800" data-chemwriter-height="450" data-chemwriter-ui="editor"></div>
+    </div>
     <input type="text" class="form-control" placeholder="Draw structure or type CAS or Name of searched compound"
       autofocus [(ngModel)]="search"  (keyup.enter)="searchItem()">
     <button class="btn btn-primary" (click)="searchItem()" routerLink="/read">Search</button>
